@@ -1,21 +1,12 @@
 import 'dart:io';
-import 'dart:isolate';
 
 import 'package:args/args.dart';
 import 'package:melos/melos.dart';
 import "package:path/path.dart" show dirname, extension, join;
 
-const lineNumber = 'line-number';
-const packagesDirectoryName = 'packages';
 const androidDirectoryName = 'android';
 const javaFileExtension = '.java';
 const executableJarFile = 'google-java-format-1.15.0-all-deps.jar';
-
-const pathsArg = 'paths';
-const portArg = 'port';
-
-List<Isolate> isolates = [];
-ReceivePort receivePort = ReceivePort();
 
 Future<void> init(List<String> arguments) async {
   final parser = ArgParser();
