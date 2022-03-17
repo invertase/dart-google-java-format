@@ -30,7 +30,7 @@ void createArraysOfJavaFiles(ArgResults argResults) async {
       workspace = await MelosWorkspace.fromConfig(config);
     } catch (e) {
       print(
-          'ERROR: You do not appear to be running dart-google-java-format from a melos workspace');
+          'ERROR: You do not appear to be running "dart-google-java-format" from a "melos" workspace');
       exit(1);
     }
 
