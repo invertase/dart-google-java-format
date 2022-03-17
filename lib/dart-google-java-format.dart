@@ -18,7 +18,6 @@ List<Isolate> isolates = [];
 ReceivePort receivePort = ReceivePort();
 
 Future<void> init(List<String> arguments) async {
-  exitCode = 0;
   final parser = ArgParser();
 
   parser.addFlag('replace');
@@ -73,11 +72,11 @@ void createArraysOfJavaFiles(ArgResults argResults) async {
       }
     }
 
-    exit(exitCode);
+    exit(0);
   } else {
     // Pass in all arguments when user doesn't use default settings (i.e. loop through /packages directory and format all .java files in /android directory)
     await googleJavaFormatTasks(argResults.arguments);
-    exit(exitCode);
+    exit(0);
   }
 }
 
