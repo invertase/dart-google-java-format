@@ -1,3 +1,5 @@
-void main(List<String> arguments) {
-  print('Hello world!');
+import '../lib/dart-google-java-format.dart';
+
+void main(List<String> arguments) async {
+  await init(arguments);
 }
