@@ -8,9 +8,11 @@ environment:
 
 dev_dependencies:
   lints: ^1.0.0
+
 dependencies: 
   args: ^2.3.0
   melos: ^1.4.0
   path: ^1.8.1
+
 executables:
-  javaformat:
+  dart_google_java_format:
