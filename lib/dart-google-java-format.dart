@@ -22,7 +22,7 @@ Future<void> init(List<String> arguments) async {
 
 void createArraysOfJavaFiles(ArgResults argResults) async {
   if (argResults.arguments.isEmpty) {
-    // default FlutterFire java formatting behaviour
+    // Default FlutterFire java formatting behaviour
     MelosWorkspace workspace;
     try {
       final config =
@@ -82,5 +82,7 @@ Future<void> googleJavaFormatTasks(List<String> arguments) async {
 
   if (processResult.stderr is String && processResult.stderr.length > 0) {
     print('ERROR: ' + processResult.stderr);
+  } else {
+    print('Successfully formatting all ".java" files');
   }
 }
