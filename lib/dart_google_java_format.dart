@@ -8,19 +8,7 @@ const androidDirectoryName = 'android';
 const javaFileExtension = '.java';
 const executableJarFile = 'google-java-format-1.15.0-all-deps.jar';
 
-Future<void> init(List<String> arguments) async {
-  final parser = ArgParser();
-
-  parser.addFlag('replace');
-  parser.addOption('lines');
-  parser.addOption('offset');
-
-  ArgResults argResults = parser.parse(arguments);
-
-  createArraysOfJavaFiles(argResults);
-}
-
-void createArraysOfJavaFiles(ArgResults argResults) async {
+Future<void> formatJavaFiles(ArgResults argResults) async {
   if (argResults.arguments.isEmpty) {
     // Default FlutterFire java formatting behaviour
     MelosWorkspace workspace;
@@ -67,6 +55,7 @@ void createArraysOfJavaFiles(ArgResults argResults) async {
   } else {
     // Pass in all arguments when user doesn't use default settings (i.e. loop through /packages directory and format all .java files in /android directory)
     await googleJavaFormatTasks(argResults.arguments);
+    print('Successfully formatted all ".java" files');
     exit(0);
   }
 }
@@ -82,7 +71,5 @@ Future<void> googleJavaFormatTasks(List<String> arguments) async {
 
   if (processResult.stderr is String && processResult.stderr.length > 0) {
     print('ERROR: ' + processResult.stderr);
-  } else {
-    print('Successfully formatting all ".java" files');
   }
 }

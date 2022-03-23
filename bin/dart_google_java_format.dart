@@ -1,5 +1,14 @@
-import '../lib/dart-google-java-format.dart';
+import '../lib/dart_google_java_format.dart';
+import 'package:args/args.dart';
 
 void main(List<String> arguments) async {
-  await init(arguments);
+  final parser = ArgParser();
+
+  parser.addFlag('replace');
+  parser.addOption('lines');
+  parser.addOption('offset');
+
+  ArgResults argResults = parser.parse(arguments);
+
+  await formatJavaFiles(argResults);
 }
