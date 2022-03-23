@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:args/args.dart';
 import 'package:melos/melos.dart';
 import "package:path/path.dart" show dirname, extension, join;
 
