@@ -7,6 +7,7 @@ const androidDirectoryName = 'android';
 const javaFileExtension = '.java';
 const executableJarFile = 'google-java-format-1.15.0-all-deps.jar';
 
+// Used official documentation to learn what arguments to pass in: https://github.com/google/google-java-format
 Future<void> formatJavaFiles(List<String> arguments) async {
   if (arguments.isEmpty) {
     // Default FlutterFire java formatting behaviour
