@@ -8,8 +8,8 @@ const androidDirectoryName = 'android';
 const javaFileExtension = '.java';
 const executableJarFile = 'google-java-format-1.15.0-all-deps.jar';
 
-Future<void> formatJavaFiles(ArgResults argResults) async {
-  if (argResults.arguments.isEmpty) {
+Future<void> formatJavaFiles(List<String> arguments) async {
+  if (arguments.isEmpty) {
     // Default FlutterFire java formatting behaviour
     MelosWorkspace workspace;
     try {
@@ -39,11 +39,11 @@ Future<void> formatJavaFiles(ArgResults argResults) async {
             .map((fsEntity) => fsEntity.path)
             .toList();
 
-        List<String> arguments = listAndroidFiles;
+        List<String> argumentsWithFiles = listAndroidFiles;
         // Add "--replace" to beginning of list to construct arguments for "google-java-format"
-        arguments.insert(0, '--replace');
+        argumentsWithFiles.insert(0, '--replace');
 
-        futures.add(googleJavaFormatTasks(arguments));
+        futures.add(googleJavaFormatTasks(argumentsWithFiles));
 
         await Future.wait(futures);
       } else {
@@ -54,7 +54,7 @@ Future<void> formatJavaFiles(ArgResults argResults) async {
     exit(0);
   } else {
     // Pass in all arguments when user doesn't use default settings (i.e. loop through /packages directory and format all .java files in /android directory)
-    await googleJavaFormatTasks(argResults.arguments);
+    await googleJavaFormatTasks(arguments);
     print('Successfully formatted all ".java" files');
     exit(0);
   }
